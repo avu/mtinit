@@ -3,7 +3,7 @@ package com.intellij.mobiusrss;
 import android.app.Activity;
 import android.content.Context;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,11 +20,7 @@ public class PreferenceUtil {
       infos = RssFeedInfo.readListFrom(sourcesStr);
     }
     else {
-      infos = Arrays.asList(
-          new RssFeedInfo("http://news.google.ru/news?pz=1&cf=all&ned=ru_ru&hl=ru&output=rss",
-              "Google News", "news.google.com"),
-          new RssFeedInfo("https://developer.apple.com/news/rss/news.rss",
-              "Apple Dev News", "News for developers"));
+      infos = Collections.emptyList();
     }
     return infos;
   }
