@@ -36,11 +36,8 @@
 }
 
 - (void)reload {
-    NSLog(@"%@", [item valueForKey:@"description"]);
-
     NSString *html = [NSString stringWithFormat:@"<html><body>%@<body></html>", [item valueForKey:@"description"]];
 
     [self.webView loadHTMLString:html baseURL:nil];
-
 }
 @end
