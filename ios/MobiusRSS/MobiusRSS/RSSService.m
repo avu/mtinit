@@ -98,11 +98,11 @@
     return parseComplete;
 }
 
-- (BOOL)newsURL:(NSURL *)url News:(NSMutableDictionary *)dictionary {
+- (BOOL)newsURL:(NSURL *)url News:(NSMutableArray *)array {
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     [parser setDelegate:self];
     info = nil;
-    feeds = dictionary;
+    feeds = array;
     parseComplete = NO;
     parseFailed = NO;
     [parser performSelectorInBackground:@selector(parse) withObject:nil];

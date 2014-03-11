@@ -9,7 +9,6 @@
 #import "RSSDetailViewController.h"
 
 @interface RSSDetailViewController ()
-- (void)configureView;
 
 @property(nonatomic) IBOutlet UIWebView *webView;
 @end
@@ -20,6 +19,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self reload];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

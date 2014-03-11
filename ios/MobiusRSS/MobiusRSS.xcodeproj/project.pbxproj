@@ -10,6 +10,7 @@
 		17AE01A2F643F55B4C3EA188 /* RSSMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE04AFEE675ED2AA507DD8 /* RSSMasterViewController.m */; };
 		17AE01C91FEBCEC7D668E30D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17AE018774012FD403AA0F43 /* InfoPlist.strings */; };
 		17AE02F50547102D0ECA858E /* RSSTitlesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE04175E240BE7BD81E71E /* RSSTitlesController.xib */; };
+		17AE0666CEEA47DDBCFF80EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17AE07EBA6D08075B515DF21 /* Localizable.strings */; };
 		17AE067BEA878F3C9B81BC12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE003F292F9D8288AEF3DD /* UIKit.framework */; };
 		17AE06B0B1984B6CC91E4671 /* RSSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE09974ABFFD6699C3A92E /* RSSDetailViewController.m */; };
 		17AE0754024CF589B08F0F7F /* RSSDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0ABB4CAFD1F9330C30FE /* RSSDetailViewController.xib */; };
@@ -36,6 +37,7 @@
 		17AE07131ECEEFF31EA9260E /* RSSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSService.m; sourceTree = "<group>"; };
 		17AE075329CF0311F48326D6 /* RSSMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSMasterViewController.h; sourceTree = "<group>"; };
 		17AE079C794FA1D8C443C930 /* RSSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSAppDelegate.m; sourceTree = "<group>"; };
+		17AE07EBA6D08075B515DF21 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		17AE086E44739101E7F2C259 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		17AE08A8FF7B16F17CF91F3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17AE08D216FDD11F34E586BC /* RSSDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSDetailViewController.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				17AE09EFD8F54C41DA6570F6 /* RSSTitlesController.h */,
 				17AE07131ECEEFF31EA9260E /* RSSService.m */,
 				17AE0BC52EECFE8ACF908575 /* RSSService.h */,
+				17AE07EBA6D08075B515DF21 /* Localizable.strings */,
 			);
 			path = MobiusRSS;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				17AE0BC1200FD93276049FBC /* RSSMasterViewController.xib in Resources */,
 				17AE0754024CF589B08F0F7F /* RSSDetailViewController.xib in Resources */,
 				17AE02F50547102D0ECA858E /* RSSTitlesController.xib in Resources */,
+				17AE0666CEEA47DDBCFF80EE /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

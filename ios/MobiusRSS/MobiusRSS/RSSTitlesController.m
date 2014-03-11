@@ -59,16 +59,9 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.textLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
-
-//    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@", [[feeds objectAtIndex:indexPath.row] objectForKey:@"pubDate"],
-//    [[feeds objectAtIndex:indexPath.row] objectForKey:@"title"]];
-//    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    cell.textLabel.numberOfLines = 0;
-
+    cell.textLabel.text = [[feeds objectAtIndex:(NSUInteger) indexPath.row] objectForKey: @"title"];
 
     return cell;
-
 }
 
 #pragma mark - Table view delegate
@@ -78,7 +71,7 @@
     if (!self.rssDetailController) {
         self.rssDetailController = [[RSSDetailViewController alloc] initWithNibName:@"RSSDetailViewController" bundle:nil];
     }
-    NSString *object = [feeds objectAtIndex:indexPath.row];
+    NSDictionary *object = [feeds objectAtIndex:(NSUInteger) indexPath.row];
     self.rssDetailController.item = [ object copy];
     [self.navigationController pushViewController:self.rssDetailController animated:YES];
     [self.rssDetailController reload];

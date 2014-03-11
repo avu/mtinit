@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8B3F3F40-5949-44C5-94B0-3B30B3A761F7</string>
+	<string>A0D8FAE1-D4E4-482E-9CCD-38FBF6B5B847</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MobiusRSS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CBB592E6-8A07-4536-B8A6-B5200600B398</key>
-		<string>ssh://github.com/avu/mteach.git</string>
+		<key>E1D196A4-F741-45FB-8F53-DF02F83E8BB9</key>
+		<string>https://github.com/avu/mtinit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ios/MobiusRSS/MobiusRSS.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CBB592E6-8A07-4536-B8A6-B5200600B398</key>
+		<key>E1D196A4-F741-45FB-8F53-DF02F83E8BB9</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/avu/mteach.git</string>
+	<string>https://github.com/avu/mtinit.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CBB592E6-8A07-4536-B8A6-B5200600B398</string>
+	<string>E1D196A4-F741-45FB-8F53-DF02F83E8BB9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CBB592E6-8A07-4536-B8A6-B5200600B398</string>
+			<string>E1D196A4-F741-45FB-8F53-DF02F83E8BB9</string>
 			<key>IDESourceControlWCCName</key>
-			<string>mteach</string>
+			<string>mtinit</string>
 		</dict>
 	</array>
 </dict>
