@@ -9,6 +9,7 @@
 #import "RSSTitlesController.h"
 #import "RSSDetailViewController.h"
 #import "RSSService.h"
+#import "TitleTableCell.h"
 
 @interface RSSTitlesController () {
     NSMutableArray *feeds;
@@ -36,9 +37,8 @@
 }
 
 - (void)reload {
-    NSURL *url = self.detailItem;
     feeds = [[NSMutableArray alloc] init];
-    [rss newsURL:url News:feeds];
+    [rss newsURL:self.detailItem News:feeds];
     [self.tableView reloadData];
 }
 
@@ -54,16 +54,24 @@
     return feeds.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    cell.textLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = [[feeds objectAtIndex:(NSUInteger) indexPath.row] objectForKey: @"title"];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    static NSString *CellIdentifier = @"TitleTableCell";
+    static NSString *CellNib = @"TitleTableCell";
+
+    TitleTableCell *cell = (TitleTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
+        cell = (TitleTableCell *)[nib objectAtIndex:0];
+    }
+
+    cell.title.text =  [[feeds objectAtIndex:(NSUInteger) indexPath.row] objectForKey:@"title"];
+    cell.title.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.title.numberOfLines = 0;
 
     return cell;
 }
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

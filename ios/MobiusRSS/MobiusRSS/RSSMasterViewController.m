@@ -30,6 +30,15 @@
 {
     [super viewDidLoad];
     [self addFeed:@"http://images.apple.com/main/rss/hotnews/hotnews.rss"];
+    [self addFeed:@"http://www.jetbrains.com/rss.xml"];
+    [self addFeed:@"http://news.yandex.ru/hardware.rss"];
+
+//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+//                                                                               target:self
+//                                                                               action:@selector(insertNewObject:)];
+//
+//    self.navigationItem.rightBarButtonItem = addButton;
 
 }
 
@@ -37,7 +46,7 @@
     if (!_rssURLS) {
         _rssURLS = [[NSMutableArray alloc] init];
     }
-    [_rssURLS insertObject:[NSURL URLWithString:url] atIndex:0];
+    [_rssURLS insertObject:url atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +80,7 @@
     }
 
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.textLabel.text = [((NSURL *) _rssURLS[(NSUInteger) indexPath.row]) description];
+    cell.textLabel.text = _rssURLS[(NSUInteger) indexPath.row];
     return cell;
 }
 
@@ -96,8 +105,7 @@
     if (!self.rssTitlesController) {
         self.rssTitlesController = [[RSSTitlesController alloc] initWithNibName:@"RSSTitlesController" bundle:nil];
     }
-    NSURL *object = _rssURLS[(NSUInteger) indexPath.row];
-    self.rssTitlesController.detailItem = object;
+    self.rssTitlesController.detailItem = _rssURLS[(NSUInteger) indexPath.row];
     [self.navigationController pushViewController:self.rssTitlesController animated:YES];
     [self.rssTitlesController reload];
 }

@@ -6,7 +6,7 @@
 #import "RSSService.h"
 
 
-@implementation RSSService {
+@implementation RSSService  {
 
     NSString *element;
     NSMutableDictionary *item;
@@ -82,9 +82,45 @@
     parseComplete = YES;
 }
 
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+    parseFailed = YES;
+}
 
-- (BOOL)feedInfoURL:(NSURL *)url Info:(NSMutableDictionary *)dictionary {
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
++ (NSString *)formatDate:(NSString *)rawDate {
+    // Supported formats:
+    // "pubDate" -> "11 Mar 2014 00:02:22 +0400"
+    // "pubDate" -> "Wed, 12 Feb 2014 23:30:00 +0400"
+    // "pubDate" -> "Mon, 10 Mar 2014 13:12:17 PDT"
+
+    NSArray *formats = @[@"dd MMM yyyy HH:mm:ss Z", @"EEE, dd MMM yyyy HH:mm:ss Z", @"EEE, dd MMM yyyy HH:mm:ss zzz"];
+
+    rawDate = [rawDate componentsSeparatedByString:@"\n"][0];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone localTimeZone]];
+    NSDate *date = nil;
+    for (NSString *f in formats) {
+        [formatter setDateFormat:f];
+        date = [formatter dateFromString:rawDate];
+        if (date) break;
+    }
+
+    if (date) {
+        [formatter setDateFormat:@"HH:mm dd.MM.yyyy "];
+        return [formatter stringFromDate:date];
+    }
+    NSLog(@"\"%@\" format is not supported", rawDate);
+    return @"";
+}
+
+- (BOOL)feedInfoURL:(NSString *)url Info:(NSMutableDictionary *)dictionary {
+    NSError *error = nil;
+    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString: url]];
+    NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];
+    if (data == nil) {
+        return NO;
+    }
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+
     [parser setDelegate:self];
     info = dictionary;
     feeds = nil;
@@ -98,11 +134,18 @@
     return parseComplete;
 }
 
-- (BOOL)newsURL:(NSURL *)url News:(NSMutableArray *)array {
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+- (BOOL)newsURL:(NSString *)url News:(NSMutableArray *)dictionary {
+    NSError *error = nil;
+    NSURL *nsUrl = [NSURL URLWithString:url];
+    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:nsUrl];
+    NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];
+    if (data == nil) {
+        return NO;
+    }
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:nsUrl];
     [parser setDelegate:self];
     info = nil;
-    feeds = array;
+    feeds = dictionary;
     parseComplete = NO;
     parseFailed = NO;
     [parser performSelectorInBackground:@selector(parse) withObject:nil];
