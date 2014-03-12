@@ -38,6 +38,7 @@ public class SourcesListAdapter extends BaseAdapter {
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    return LayoutInflater.from(myContext).inflate(R.layout.sources_list_item, parent, false);
+    return null;
+//    return LayoutInflater.from(myContext).inflate(R.layout.sources_list_item, parent, false);
   }
 }
