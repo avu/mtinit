@@ -40,7 +40,25 @@ public class ChooseSourceActivity extends Activity {
     listView.setAdapter(myListViewAdapter);
   }
 
-  /*private void doAddSource(String url, RssFeed rssFeed) {
+  /*@Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.add:
+        addItemSelected();
+        return true;
+      case R.id.remove:
+        removeItemSelected();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
+  private void addItemSelected() {
+    new AddSourceDialogFragment().show(getFragmentManager(), "add_source_dialog");
+  }
+
+  private void doAddSource(String url, RssFeed rssFeed) {
     mySources.add(new RssFeedInfo(url, rssFeed.getTitle(), rssFeed.getDescription()));
     PreferenceUtil.doSaveSources(this, mySources);
   }
