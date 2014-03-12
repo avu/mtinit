@@ -31,4 +31,58 @@ public class ChooseSourceActivity extends Activity {
       }
     });
   }
+
+  /*public class MyRssFeedLoadingTask extends RssFeedLoadingTask {
+
+    MyRssFeedLoadingTask(String url) {
+      super(url);
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+      super.onProgressUpdate(values);
+    }
+
+    @Override
+    protected void onPostExecute(RssFeed rssFeed) {
+      super.onPostExecute(rssFeed);
+
+      if (rssFeed != null) {
+        doAddSource(myUrl, rssFeed);
+      } else {
+        new AlertDialog.Builder(ChooseSourceActivity.this)
+            .setMessage("Cannot load RSS feed")
+            .setNeutralButton(R.string.ok, null).create().show();
+      }
+    }
+  }*/
+
+  /*public static class AddSourceDialogFragment extends DialogFragment {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+      final Activity activity = getActivity();
+      @SuppressWarnings("ConstantConditions")
+      final EditText input = new EditText(activity);
+      input.setInputType(EditorInfo.TYPE_TEXT_VARIATION_URI);
+
+      return new AlertDialog.Builder(activity).setMessage(getString(R.string.input_url))
+          .setView(input)
+          .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              final Editable text = input.getText();
+
+              if (text != null) {
+                final String url = text.toString();
+
+                if (!url.isEmpty()) {
+                  ((ChooseSourceActivity) activity).doAddSource(url);
+                }
+              }
+            }
+          })
+          .setNegativeButton(getString(R.string.cancel), null)
+          .create();
+    }
+  }*/
 }

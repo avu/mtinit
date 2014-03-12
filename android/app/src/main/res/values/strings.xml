@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Mobius RSS Reader</string>
+  <string name="input_url">Please input URL</string>
+  <string name="ok">OK</string>
+  <string name="cancel">Cancel</string>
 </resources>
