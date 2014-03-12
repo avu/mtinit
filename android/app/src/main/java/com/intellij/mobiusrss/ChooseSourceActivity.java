@@ -12,6 +12,9 @@ import java.util.List;
 
 public class ChooseSourceActivity extends Activity {
 
+//  private List<RssFeedInfo> mySources;
+//  private SourcesListAdapter myListViewAdapter;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -30,10 +33,15 @@ public class ChooseSourceActivity extends Activity {
         startActivity(FeedActivity.createIntent(ChooseSourceActivity.this, url));
       }
     });
+//    mySources = new ArrayList<RssFeedInfo>(PreferenceUtil.doLoadSources(this));
+//    myListViewAdapter = new SourcesListAdapter(this, mySources);
+//    listView.setAdapter(myListViewAdapter);
   }
 
   /*private void doAddSource(String url, RssFeed rssFeed) {
-
+    mySources.add(new RssFeedInfo(url, rssFeed.getTitle(), rssFeed.getDescription()));
+    myListViewAdapter.notifyDataSetChanged();
+    PreferenceUtil.doSaveSources(this, mySources);
   }
 
   private void doAddSource(String url) {
