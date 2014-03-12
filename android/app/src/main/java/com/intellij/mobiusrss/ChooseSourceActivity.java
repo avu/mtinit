@@ -45,7 +45,7 @@ public class ChooseSourceActivity extends Activity {
   }
 
   private void doAddSource(String url) {
-
+    new MyRssFeedLoadingTask(url).execute();
   }
 
   public class MyRssFeedLoadingTask extends RssFeedLoadingTask {
