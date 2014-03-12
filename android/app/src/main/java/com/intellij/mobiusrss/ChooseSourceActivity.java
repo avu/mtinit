@@ -40,7 +40,6 @@ public class ChooseSourceActivity extends Activity {
 
   /*private void doAddSource(String url, RssFeed rssFeed) {
     mySources.add(new RssFeedInfo(url, rssFeed.getTitle(), rssFeed.getDescription()));
-    myListViewAdapter.notifyDataSetChanged();
     PreferenceUtil.doSaveSources(this, mySources);
   }
 
