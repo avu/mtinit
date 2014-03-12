@@ -32,7 +32,15 @@ public class ChooseSourceActivity extends Activity {
     });
   }
 
-  /*public class MyRssFeedLoadingTask extends RssFeedLoadingTask {
+  /*private void doAddSource(String url, RssFeed rssFeed) {
+
+  }
+
+  private void doAddSource(String url) {
+
+  }
+
+  public class MyRssFeedLoadingTask extends RssFeedLoadingTask {
 
     MyRssFeedLoadingTask(String url) {
       super(url);
@@ -55,9 +63,9 @@ public class ChooseSourceActivity extends Activity {
             .setNeutralButton(R.string.ok, null).create().show();
       }
     }
-  }*/
+  }
 
-  /*public static class AddSourceDialogFragment extends DialogFragment {
+  public static class AddSourceDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
       final Activity activity = getActivity();
