@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.Arrays;
@@ -12,8 +13,8 @@ import java.util.List;
 
 public class ChooseSourceActivity extends Activity {
 
-//  private List<RssFeedInfo> mySources;
-//  private SourcesListAdapter myListViewAdapter;
+  private List<String> mySources;
+  private ListAdapter myListViewAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +22,22 @@ public class ChooseSourceActivity extends Activity {
     setContentView(R.layout.activity_choose_source);
 
     final ListView listView = (ListView) findViewById(R.id.sourcesListView);
-    final List<String> sources = Arrays.asList(
-        "http://news.google.ru/news?pz=1&cf=all&ned=ru_ru&hl=ru&output=rss",
-        "https://developer.apple.com/news/rss/news.rss");
-    listView.setAdapter(new ArrayAdapter<String>(
-        this, android.R.layout.simple_list_item_1, sources));
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final String url = sources.get(position);
+        final String url = mySources.get(position);
         startActivity(FeedActivity.createIntent(ChooseSourceActivity.this, url));
       }
     });
-//    mySources = new ArrayList<RssFeedInfo>(PreferenceUtil.doLoadSources(this));
-//    myListViewAdapter = new SourcesListAdapter(this, mySources);
-//    listView.setAdapter(myListViewAdapter);
+    mySources = Arrays.asList(
+        "http://news.google.ru/news?pz=1&cf=all&ned=ru_ru&hl=ru&output=rss",
+        "https://developer.apple.com/news/rss/news.rss");
+    //mySources = new ArrayList<RssFeedInfo>(PreferenceUtil.doLoadSources(this));
+
+    myListViewAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mySources);
+    //myListViewAdapter = new SourcesListAdapter(this, mySources);
+
+    listView.setAdapter(myListViewAdapter);
   }
 
   /*private void doAddSource(String url, RssFeed rssFeed) {
