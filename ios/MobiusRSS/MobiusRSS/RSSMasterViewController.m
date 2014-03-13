@@ -8,6 +8,7 @@
 
 #import "RSSMasterViewController.h"
 #import "RSSTitlesController.h"
+#import "Chrome.h"
 
 @interface RSSMasterViewController () {
     NSMutableArray *_rssURLS;
@@ -33,12 +34,12 @@
     [self addFeed:@"http://www.jetbrains.com/rss.xml"];
     [self addFeed:@"http://news.yandex.ru/hardware.rss"];
 
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-//                                                                               target:self
-//                                                                               action:@selector(insertNewObject:)];
-//
-//    self.navigationItem.rightBarButtonItem = addButton;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                               target:self
+                                                                               action:@selector(insertNewObject:)];
+
+    self.navigationItem.rightBarButtonItem = addButton;
 
 }
 
@@ -52,6 +53,17 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)insertNewObject:(id)sender
+{
+    [Chrome alertViewTitle:@"RSS Feed" message:@"Input rss feed" delegate:self];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
+    [self addFeed: [[alertView textFieldAtIndex:0] text]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
@@ -93,10 +105,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        [self removeFeed:(NSUInteger) indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 
+}
+
+- (void)removeFeed:(NSUInteger)i {
+    [_rssURLS removeObjectAtIndex:i];
 }
 
 

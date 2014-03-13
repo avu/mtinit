@@ -20,6 +20,7 @@
 		17AE07D8924DAA71E2052D62 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0968899F1835954DAA37 /* Default@2x.png */; };
 		17AE086E4F3BDC707665A61C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE05735CD2BBDD3A0DBF70 /* Foundation.framework */; };
 		17AE09FFB1DDFD8C1DDE8F7A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0B4BDAE9BB808DD14A77 /* Default-568h@2x.png */; };
+		17AE0A15D5995EA0FF69DD0D /* Chrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE07789224CCEB4090FF2B /* Chrome.m */; };
 		17AE0AF86E7C0EAA7F275830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE08A8FF7B16F17CF91F3A /* main.m */; };
 		17AE0BBF0DDFC65BF8FDD1BE /* RSSTitlesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE08FBD4D5FEBD21477FA4 /* RSSTitlesController.m */; };
 		17AE0BC1200FD93276049FBC /* RSSMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0835E2B5490E3CC70C63 /* RSSMasterViewController.xib */; };
@@ -38,6 +39,7 @@
 		17AE068C286ED86EEC2822D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		17AE07131ECEEFF31EA9260E /* RSSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSService.m; sourceTree = "<group>"; };
 		17AE075329CF0311F48326D6 /* RSSMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSMasterViewController.h; sourceTree = "<group>"; };
+		17AE07789224CCEB4090FF2B /* Chrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chrome.m; sourceTree = "<group>"; };
 		17AE079C794FA1D8C443C930 /* RSSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSAppDelegate.m; sourceTree = "<group>"; };
 		17AE079C89CA42B856AD5504 /* TitleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableCell.xib; sourceTree = "<group>"; };
 		17AE07B5DDEEA07A8B88365A /* TitleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleTableCell.h; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		17AE0BC52EECFE8ACF908575 /* RSSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSService.h; sourceTree = "<group>"; };
 		17AE0CAB046088C55EE7BB9F /* RSSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSAppDelegate.h; sourceTree = "<group>"; };
 		17AE0D270933F477D752B102 /* TitleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleTableCell.m; sourceTree = "<group>"; };
+		17AE0DB291A86DF7CE5C660F /* Chrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chrome.h; sourceTree = "<group>"; };
 		17AE0DC1760468D74528816D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RSSMasterViewController.xib; sourceTree = "<group>"; };
 		17AE0F5CE126F585854ED3A6 /* MobiusRSS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "MobiusRSS-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +138,8 @@
 				17AE079C89CA42B856AD5504 /* TitleTableCell.xib */,
 				17AE07B5DDEEA07A8B88365A /* TitleTableCell.h */,
 				17AE0D270933F477D752B102 /* TitleTableCell.m */,
+				17AE0DB291A86DF7CE5C660F /* Chrome.h */,
+				17AE07789224CCEB4090FF2B /* Chrome.m */,
 			);
 			path = MobiusRSS;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				17AE0BBF0DDFC65BF8FDD1BE /* RSSTitlesController.m in Sources */,
 				17AE07D7215386E12F341489 /* RSSService.m in Sources */,
 				17AE02FC900CFD72F328D8FE /* TitleTableCell.m in Sources */,
+				17AE0A15D5995EA0FF69DD0D /* Chrome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
