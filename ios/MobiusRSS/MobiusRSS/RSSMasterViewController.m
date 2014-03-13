@@ -44,6 +44,10 @@
 
 }
 
+- (void)addFeed:(NSString *)url {
+    [_rssURLS insertObject:url atIndex:0];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
