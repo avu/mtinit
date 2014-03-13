@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
 		<string key="IBDocument.SystemVersion">13C64</string>
-		<string key="IBDocument.InterfaceBuilderVersion">4514</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1265.19</string>
 		<string key="IBDocument.HIToolboxVersion">697.40</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">3747</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBNSLayoutConstraint</string>
@@ -65,8 +65,8 @@
 									<int key="type">1</int>
 									<double key="pointSize">10</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="298713190">
-									<string key="NSName">HelveticaNeue</string>
+								<object class="NSFont" key="IBUIFont" id="926104271">
+									<string key="NSName">Helvetica</string>
 									<double key="NSSize">10</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -98,7 +98,7 @@
 								<int key="IBUITextAlignment">1</int>
 								<int key="IBUILineBreakMode">0</int>
 								<reference key="IBUIFontDescription" ref="985723858"/>
-								<reference key="IBUIFont" ref="298713190"/>
+								<reference key="IBUIFont" ref="926104271"/>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<double key="preferredMaxLayoutWidth">98</double>
 							</object>
@@ -115,7 +115,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework-SevenAndLater</string>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 66}</string>
@@ -138,6 +138,14 @@
 						<reference key="destination" ref="160462379"/>
 					</object>
 					<string key="id">f3U-C6-arh</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">date</string>
+						<reference key="source" ref="14708252"/>
+						<reference key="destination" ref="876667178"/>
+					</object>
+					<string key="id">22q-kD-Hg6</string>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -179,7 +187,6 @@
 								<int key="scoringType">6</int>
 								<float key="scoringTypeFloat">24</float>
 								<int key="contentType">2</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 							<object class="IBNSLayoutConstraint" id="528644668">
 								<reference key="firstItem" ref="14708252"/>
@@ -196,7 +203,6 @@
 								<int key="scoringType">3</int>
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 							<object class="IBNSLayoutConstraint" id="1018797799">
 								<reference key="firstItem" ref="160462379"/>
@@ -210,10 +216,9 @@
 								</object>
 								<float key="priority">1000</float>
 								<reference key="containingView" ref="14708252"/>
-								<int key="scoringType">8</int>
+								<int key="scoringType">0</int>
 								<float key="scoringTypeFloat">23</float>
 								<int key="contentType">3</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 							<object class="IBNSLayoutConstraint" id="318110599">
 								<reference key="firstItem" ref="160462379"/>
@@ -230,7 +235,6 @@
 								<int key="scoringType">3</int>
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 							<reference ref="876667178"/>
 						</array>
@@ -255,7 +259,6 @@
 								<int key="scoringType">3</int>
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">1</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 							<object class="IBNSLayoutConstraint" id="506382921">
 								<reference key="firstItem" ref="160462379"/>
@@ -272,7 +275,6 @@
 								<int key="scoringType">3</int>
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">1</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 						</array>
 						<reference key="parent" ref="14708252"/>
@@ -316,7 +318,6 @@
 								<int key="scoringType">3</int>
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">1</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 							<object class="IBNSLayoutConstraint" id="893431787">
 								<reference key="firstItem" ref="876667178"/>
@@ -333,7 +334,6 @@
 								<int key="scoringType">3</int>
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">1</int>
-								<bool key="placeholder">NO</bool>
 							</object>
 						</array>
 						<reference key="parent" ref="14708252"/>
@@ -417,17 +417,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">TitleTableCell</string>
 					<string key="superclassName">UITableViewCell</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">title</string>
-						<string key="NS.object.0">UILabel</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">title</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="date">UILabel</string>
+						<string key="title">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="date">
+							<string key="name">date</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="title">
 							<string key="name">title</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-					</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/TitleTableCell.h</string>
@@ -437,11 +440,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<bool key="IBDocument.previouslyAttemptedUpgradeToXcode5">YES</bool>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1552" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="4600" key="NS.object.0"/>
@@ -449,6 +447,6 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
-		<string key="IBCocoaTouchPluginVersion">3747</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>
