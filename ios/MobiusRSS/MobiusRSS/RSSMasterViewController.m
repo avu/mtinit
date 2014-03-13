@@ -23,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Mobius RSS Reader", @"Master");
+        _rssURLS = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -43,13 +44,6 @@
 
 }
 
-- (void)addFeed:(NSString *)url {
-    if (!_rssURLS) {
-        _rssURLS = [[NSMutableArray alloc] init];
-    }
-    [_rssURLS insertObject:url atIndex:0];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -61,7 +55,9 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
-    [self addFeed: [[alertView textFieldAtIndex:0] text]];
+    NSString* url = [[alertView textFieldAtIndex:0] text];
+    [_rssURLS insertObject:url atIndex:0];
+
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
