@@ -99,6 +99,7 @@ public class ChooseSourceActivity extends Activity {
         i++;
       }
       myListViewAdapter.notifyDataSetChanged();
+      PreferenceUtil.doSaveSources(this, mySources);
     }
   }
 
