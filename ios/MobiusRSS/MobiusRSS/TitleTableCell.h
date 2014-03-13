@@ -11,6 +11,4 @@
 @interface TitleTableCell : UITableViewCell {
 }
 @property IBOutlet UILabel *title;
-//@property IBOutlet UILabel *date;
-@property(nonatomic) IBOutlet UILabel *date;
 @end

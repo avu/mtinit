@@ -10,5 +10,4 @@
 
 @implementation TitleTableCell
 @synthesize title;
-@synthesize date;
 @end
