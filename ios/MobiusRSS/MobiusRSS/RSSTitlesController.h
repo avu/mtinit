@@ -10,7 +10,7 @@
 
 @class RSSDetailViewController;
 
-@interface RSSTitlesController : UITableViewController <NSXMLParserDelegate>
+@interface RSSTitlesController : UITableViewController
 
 @property NSString *detailItem;
 @property(nonatomic, strong) RSSDetailViewController *rssDetailController;

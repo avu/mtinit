@@ -54,9 +54,24 @@
     return feeds.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TitleTableCell *cell = [self getCell:tableView];
+    return cell.frame.size.height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    TitleTableCell *cell= [self getCell:tableView];
+
+    cell.title.text =  [[feeds objectAtIndex:(NSUInteger) indexPath.row] objectForKey:@"title"];
+    cell.title.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.title.numberOfLines = 0;
+
+    return cell;
+}
+
+- (TitleTableCell *)getCell:(UITableView *)tableView {
     static NSString *CellIdentifier = @"TitleTableCell";
     static NSString *CellNib = @"TitleTableCell";
 
@@ -65,11 +80,6 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
         cell = (TitleTableCell *)[nib objectAtIndex:0];
     }
-
-    cell.title.text =  [[feeds objectAtIndex:(NSUInteger) indexPath.row] objectForKey:@"title"];
-    cell.title.lineBreakMode = NSLineBreakByWordWrapping;
-    cell.title.numberOfLines = 0;
-
     return cell;
 }
 #pragma mark - Table view delegate
