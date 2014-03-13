@@ -65,8 +65,6 @@
     TitleTableCell *cell= [self getCell:tableView];
 
     cell.title.text =  [[feeds objectAtIndex:(NSUInteger) indexPath.row] objectForKey:@"title"];
-    cell.title.lineBreakMode = NSLineBreakByWordWrapping;
-    cell.title.numberOfLines = 0;
 
     return cell;
 }
