@@ -60,7 +60,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
     NSString* url = [[alertView textFieldAtIndex:0] text];
-    [_rssURLS insertObject:url atIndex:0];
+    [self addFeed:url];
 
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
