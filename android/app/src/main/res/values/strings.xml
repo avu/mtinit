@@ -4,4 +4,5 @@
   <string name="input_url">Please input URL</string>
   <string name="ok">OK</string>
   <string name="cancel">Cancel</string>
+  <string name="cannot_load_rss_feed">Cannot load RSS feed</string>
 </resources>

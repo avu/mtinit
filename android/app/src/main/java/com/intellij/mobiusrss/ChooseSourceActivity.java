@@ -2,55 +2,74 @@ package com.intellij.mobiusrss;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Editable;
+import android.util.SparseBooleanArray;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import nl.matshofman.saxrssreader.RssFeed;
 
 public class ChooseSourceActivity extends Activity {
 
-  private List<String> mySources;
-  private ListAdapter myListViewAdapter;
+  private List<RssFeedInfo> mySources;
+  private BaseAdapter myListViewAdapter;
+  private ListView myListView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_choose_source);
 
-    final ListView listView = (ListView) findViewById(R.id.sourcesListView);
-    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    myListView = (ListView) findViewById(R.id.sourcesListView);
+    myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final String url = mySources.get(position);
-        startActivity(FeedActivity.createIntent(ChooseSourceActivity.this, url));
+        final RssFeedInfo feedInfo = mySources.get(position);
+        startActivity(FeedActivity.createIntent(ChooseSourceActivity.this, feedInfo.getUrl()));
       }
     });
-    mySources = Arrays.asList(
-        "http://news.google.ru/news?pz=1&cf=all&ned=ru_ru&hl=ru&output=rss",
-        "https://developer.apple.com/news/rss/news.rss");
-    //mySources = new ArrayList<RssFeedInfo>(PreferenceUtil.doLoadSources(this));
+    myListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+      @Override
+      public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        final boolean checked = !myListView.isItemChecked(position);
+        myListView.setItemChecked(position, checked);
 
-    myListViewAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mySources);
-    //myListViewAdapter = new SourcesListAdapter(this, mySources);
+        if (checked) {
+          view.setBackground(new ColorDrawable(Color.GRAY));
+        }
+        else {
+          view.setBackground(null);
+        }
+        return true;
+      }
+    });
+    mySources = new ArrayList<RssFeedInfo>(PreferenceUtil.doLoadSources(this));
+    myListViewAdapter = new ArrayAdapter<RssFeedInfo>(this, android.R.layout.
+        simple_list_item_1, mySources);
 
-    listView.setAdapter(myListViewAdapter);
+    myListView.setAdapter(myListViewAdapter);
+    myListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
   }
 
-  /*@Override
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.choose_source, menu);
+    return true;
+  }
+
+  @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.add:
@@ -64,17 +83,37 @@ public class ChooseSourceActivity extends Activity {
     }
   }
 
+  private void removeItemSelected() {
+    final SparseBooleanArray positions = myListView.getCheckedItemPositions();
+
+    if (positions != null && positions.size() > 0) {
+      int i = 0;
+
+      for (Iterator<RssFeedInfo> it = mySources.iterator(); it.hasNext(); ) {
+        it.next();
+
+        if (positions.get(i)) {
+          positions.put(i, false);
+          it.remove();
+        }
+        i++;
+      }
+      myListViewAdapter.notifyDataSetChanged();
+    }
+  }
+
   private void addItemSelected() {
     new AddSourceDialogFragment().show(getFragmentManager(), "add_source_dialog");
   }
 
-  private void doAddSource(String url, RssFeed rssFeed) {
-    mySources.add(new RssFeedInfo(url, rssFeed.getTitle(), rssFeed.getDescription()));
-    PreferenceUtil.doSaveSources(this, mySources);
+  public void doAddSource(String url) {
+    new MyRssFeedLoadingTask(url).execute();
   }
 
-  private void doAddSource(String url) {
-    new MyRssFeedLoadingTask(url).execute();
+  private void doAddSource(String url, RssFeed rssFeed) {
+    mySources.add(new RssFeedInfo(url, rssFeed.getTitle(), rssFeed.getDescription()));
+    myListViewAdapter.notifyDataSetChanged();
+    PreferenceUtil.doSaveSources(this, mySources);
   }
 
   public class MyRssFeedLoadingTask extends RssFeedLoadingTask {
@@ -96,38 +135,10 @@ public class ChooseSourceActivity extends Activity {
         doAddSource(myUrl, rssFeed);
       } else {
         new AlertDialog.Builder(ChooseSourceActivity.this)
-            .setMessage("Cannot load RSS feed")
+            .setMessage(getString(R.string.cannot_load_rss_feed))
             .setNeutralButton(R.string.ok, null).create().show();
       }
     }
   }
 
-  public static class AddSourceDialogFragment extends DialogFragment {
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-      final Activity activity = getActivity();
-      @SuppressWarnings("ConstantConditions")
-      final EditText input = new EditText(activity);
-      input.setInputType(EditorInfo.TYPE_TEXT_VARIATION_URI);
-
-      return new AlertDialog.Builder(activity).setMessage(getString(R.string.input_url))
-          .setView(input)
-          .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-              final Editable text = input.getText();
-
-              if (text != null) {
-                final String url = text.toString();
-
-                if (!url.isEmpty()) {
-                  ((ChooseSourceActivity) activity).doAddSource(url);
-                }
-              }
-            }
-          })
-          .setNegativeButton(getString(R.string.cancel), null)
-          .create();
-    }
-  }*/
 }

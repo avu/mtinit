@@ -84,4 +84,9 @@ public class RssFeedInfo {
       return null;
     }
   }
+
+  @Override
+  public String toString() {
+    return myUrl;
+  }
 }
